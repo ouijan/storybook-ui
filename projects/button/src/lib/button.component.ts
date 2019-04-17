@@ -1,13 +1,22 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, OnInit } from '@angular/core';
+import { EventEmitter } from 'events';
 
 @Component({
   selector: 'ui-button',
   template: `
-    <button [disabled]="disabled">{{ text }}</button>
+    <button [disabled]="disabled" (click)="action.emit()">
+      {{ text }}
+    </button>
   `,
   styles: []
 })
-export class ButtonComponent {
+export class ButtonComponent implements OnInit {
   @Input() text = '';
   @Input() disabled = false;
+  @Output() action = new EventEmitter();
+
+  ngOnInit() {
+    console.log(this);
+  }
+
 }
