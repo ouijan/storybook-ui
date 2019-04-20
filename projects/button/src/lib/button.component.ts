@@ -4,9 +4,11 @@ import { EventEmitter } from 'events';
 @Component({
   selector: 'ui-button',
   template: `
-    <button [disabled]="disabled" (click)="action.emit()">
-      {{ text }}
-    </button>
+    <div class="card">
+      <button [disabled]="disabled" (click)="action.emit()">
+        {{ text }}
+      </button>
+    </div>
   `,
   styles: []
 })

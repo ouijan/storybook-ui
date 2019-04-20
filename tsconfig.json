@@ -24,6 +24,12 @@
       ],
       "button/*": [
         "dist/button/*"
+      ],
+      "dental-charting": [
+        "dist/dental-charting"
+      ],
+      "dental-charting/*": [
+        "dist/dental-charting/*"
       ]
     }
   }
