@@ -1,0 +1,14 @@
+:host {
+  fill: #eeeeee;
+  stroke: #333333;
+  stroke-width: 3px;
+
+  &.selected {
+    fill: yellow;
+  }
+
+  &.highlighted {
+    fill: deepskyblue;
+  }
+
+}

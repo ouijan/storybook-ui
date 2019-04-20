@@ -1,0 +1,19 @@
+<svg:g dc-tooth-root [roots]="roots" transform="translate(0 25)" />
+
+<!-- Background -->
+<svg:circle cx="0" cy="0" r="85" fill="#fff" transform="translate(0 -100)" />
+
+<svg:g dc-tooth-side transform="translate(-60, -100)" />
+<svg:g dc-tooth-side transform="translate(60, -100) rotate(180)" />
+<svg:g dc-tooth-side transform="translate(0, -160) rotate(90)" />
+<svg:g dc-tooth-side transform="translate(0, -40) rotate(-90)" />
+<svg:g dc-tooth-center transform="translate(0 -100)" />
+
+<svg:text class="tooth-label" transform="translate(0 -195)">
+  {{ label }}
+</svg:text>
+
+<!-- Hitboxes -->
+
+<!-- Center Point -->
+<svg:circle cx="0" cy="0" r="3" fill="cyan" stroke="none" />
