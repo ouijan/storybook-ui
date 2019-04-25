@@ -2,13 +2,11 @@ import { Component, Input, HostBinding } from '@angular/core';
 
 @Component({
   // tslint:disable-next-line: component-selector
-  selector: 'svg:g [dc-tooth-root]',
-  templateUrl: './tooth-root.component.html',
-  styleUrls: ['../surface.scss'],
+  selector: 'svg:g [dc-tooth-center]',
+  template: `<svg:circle cx="0" cy="0" r="32" />`,
+  styleUrls: ['../styles/surface.scss'],
 })
-export class ToothRootComponent {
-  @Input() roots = 1;
-
+export class ToothCenterComponent {
   @HostBinding('class.highlighted')
   @Input() isHighlighted = false;
 

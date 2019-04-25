@@ -1,12 +1,14 @@
 import { storiesOf, moduleMetadata } from '@storybook/angular';
-import { number, withKnobs, text, boolean } from '@storybook/addon-knobs';
-import { SVGWrap, translate, rootsKnob } from './helpers';
+import { withKnobs, text, boolean } from '@storybook/addon-knobs';
+import { SVGWrap, translate, rootsKnob, matrixKnobs } from './helpers';
 import {
   ToothCenterComponent,
   ToothSideComponent,
   ToothRootComponent,
   ToothHitboxesComponent,
   ToothComponent,
+  ChartMatrixDirective,
+  matrix,
 } from 'dental-charting';
 
 
@@ -19,7 +21,8 @@ const stories = storiesOf('Dental Charting', module)
       ToothSideComponent,
       ToothRootComponent,
       ToothHitboxesComponent,
-      ToothComponent
+      ToothComponent,
+      ChartMatrixDirective
     ],
   }));
 
@@ -73,5 +76,12 @@ stories
     props: {
       label: text('label', 'Tooth Label'),
       roots: rootsKnob(),
+    }
+  }))
+
+  .add('Chart Matrix', () => ({
+    template: SVGWrap(`<svg:circle r="25" [dcChartMatrix]="matrix"></svg:circle>`),
+    props: {
+      matrix: matrixKnobs('matrix'),
     }
   }));

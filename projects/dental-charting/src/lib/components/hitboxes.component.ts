@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core';
   template: `<svg:polygon
     *ngFor="let points of hitboxes"
     class="hitbox"
-    [attr.d]="points"
+    [attr.points]="points"
   />`,
   styles: [`
     .hitbox {

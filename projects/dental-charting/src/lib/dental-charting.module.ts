@@ -1,31 +1,31 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DentalChartingComponent } from './dental-charting.component';
-import { ToothCenterComponent } from './tooth-center.component';
-import { ToothSideComponent } from './tooth-side.component';
-import { ToothRootComponent } from './tooth-root.component';
-import { ToothHitboxesComponent } from './hitboxes.component';
-import { ToothComponent } from './tooth.component';
+import { ToothCenterComponent } from './components/tooth-center.component';
+import { ToothSideComponent } from './components/tooth-side.component';
+import { ToothRootComponent } from './components/tooth-root.component';
+import { ToothHitboxesComponent } from './components/hitboxes.component';
+import { ToothComponent } from './components/tooth.component';
+import { ChartMatrixDirective } from './directives/chart-matrix.directive';
 
 @NgModule({
   declarations: [
-    DentalChartingComponent,
     ToothCenterComponent,
     ToothSideComponent,
     ToothRootComponent,
     ToothHitboxesComponent,
-    ToothComponent
+    ToothComponent,
+    ChartMatrixDirective
   ],
   imports: [
     CommonModule,
   ],
   exports: [
-    DentalChartingComponent,
     ToothCenterComponent,
     ToothSideComponent,
     ToothRootComponent,
     ToothHitboxesComponent,
-    ToothComponent
+    ToothComponent,
+    ChartMatrixDirective
   ]
 })
 export class DentalChartingModule { }

@@ -42,7 +42,7 @@
       "root": "projects/dental-charting",
       "sourceRoot": "projects/dental-charting/src",
       "projectType": "library",
-      "prefix": "lib",
+      "prefix": "dc",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
@@ -74,5 +74,5 @@
       }
     }
   },
-  "defaultProject": "button"
+  "defaultProject": "dental-charting"
 }
