@@ -1,6 +1,6 @@
 import { storiesOf, moduleMetadata } from '@storybook/angular';
 import { withKnobs, text, boolean } from '@storybook/addon-knobs';
-import { SVGWrap, translate, rootsKnob, matrixKnobs } from './helpers';
+import { SVGWrap, rootsKnob, matrixKnobs, SVGCenter } from './helpers';
 import {
   ToothCenterComponent,
   ToothSideComponent,
@@ -11,11 +11,11 @@ import {
   ArchComponent,
   MouthComponent,
   ChartMatrixDirective,
-  matrix,
   mockQuadrant,
   mockArch,
   mockMouth,
 } from 'dental-charting';
+import { action } from '@storybook/addon-actions';
 
 
 
@@ -37,10 +37,10 @@ const stories = storiesOf('Dental Charting', module)
 
 stories
   .add('Tooth Center', () => ({
-    template: SVGWrap(`<svg:g dc-tooth-center
+    template: SVGWrap(SVGCenter(`<svg:g dc-tooth-center
       [isSelected]="isSelected"
       [isHighlighted]="isHighlighted"
-      ${translate()}></svg:g>`),
+      ></svg:g>`)),
     props: {
       isSelected: boolean('isSelected', false),
       isHighlighted: boolean('isHighlighted', false),
@@ -48,10 +48,10 @@ stories
   }))
 
   .add('Tooth Side', () => ({
-    template: SVGWrap(`<svg:g dc-tooth-side
+    template: SVGWrap(SVGCenter(`<svg:g dc-tooth-side
       [isSelected]="isSelected"
       [isHighlighted]="isHighlighted"
-      ${translate()}></svg:g>`),
+      ></svg:g>`)),
     props: {
       isSelected: boolean('isSelected', false),
       isHighlighted: boolean('isHighlighted', false),
@@ -59,11 +59,11 @@ stories
   }))
 
   .add('Tooth Root', () => ({
-    template: SVGWrap(`<svg:g dc-tooth-root
+    template: SVGWrap(SVGCenter(`<svg:g dc-tooth-root
       [roots]="roots"
       [isSelected]="isSelected"
       [isHighlighted]="isHighlighted"
-      ${translate()}></svg:g>`),
+      ></svg:g>`)),
     props: {
       roots: rootsKnob(),
       isSelected: boolean('isSelected', false),
@@ -72,12 +72,12 @@ stories
   }))
 
   .add('Tooth', () => ({
-    template: SVGWrap(`<svg:g dc-tooth
+    template: SVGWrap(SVGCenter(`<svg:g dc-tooth
       [roots]="roots"
       [label]="label"
       [isSelected]="isSelected"
       [isHighlighted]="isHighlighted"
-      ${translate()}></svg:g>`),
+      ></svg:g>`)),
     props: {
       label: text('label', '24'),
       roots: rootsKnob(),
@@ -87,12 +87,12 @@ stories
   }))
 
   .add('Quadrant', () => ({
-    template: SVGWrap(`<svg:g dc-quadrant
+    template: SVGWrap(SVGCenter(`<svg:g dc-quadrant
       [label]="label"
       [rows]="rows"
       [isSelected]="isSelected"
       [isHighlighted]="isHighlighted"
-      ></svg:g>`),
+      ></svg:g>`)),
     props: {
       label: text('label', 'Quadrant 3'),
       rows: mockQuadrant().rows,
@@ -102,12 +102,12 @@ stories
   }))
 
   .add('Arch', () => ({
-    template: SVGWrap(`<svg:g dc-arch
+    template: SVGWrap(SVGCenter(`<svg:g dc-arch
       [label]="label"
       [quadrants]="quadrants"
       [isSelected]="isSelected"
       [isHighlighted]="isHighlighted"
-      ></svg:g>`),
+      ></svg:g>`)),
     props: {
       label: text('label', 'Upper Arch'),
       quadrants: mockArch().quadrants,
@@ -117,11 +117,11 @@ stories
   }))
 
   .add('Mouth', () => ({
-    template: SVGWrap(`<svg:g dc-mouth
+    template: SVGWrap(SVGCenter(`<svg:g dc-mouth
       [arches]="arches"
       [isSelected]="isSelected"
       [isHighlighted]="isHighlighted"
-      ></svg:g>`),
+      ></svg:g>`)),
     props: {
       arches: mockMouth().arches,
       isSelected: boolean('isSelected', false),
@@ -130,7 +130,7 @@ stories
   }))
 
   .add('Hit Boxes', () => ({
-    template: SVGWrap(`<svg:g dc-hitboxes [hitboxes]="hitboxes" ${translate()}></svg:g>`),
+    template: SVGWrap(SVGCenter(`<svg:g dc-hitboxes [hitboxes]="hitboxes"></svg:g>`)),
     props: {
       hitboxes: [
         [0, 40, 40, 40, 40, -40]
@@ -139,8 +139,18 @@ stories
   }))
 
   .add('Chart Matrix', () => ({
-    template: SVGWrap(`<svg:circle r="25" [dcChartMatrix]="matrix"></svg:circle>`),
+    template: SVGWrap(SVGCenter(`
+      <svg:circle r="3" fill="cyan"></svg:circle>
+      <svg:rect width="25" height="25" fill="red" [dcChartMatrix]="matrix"></svg:rect>
+    `)),
     props: {
       matrix: matrixKnobs('matrix'),
+    }
+  }))
+
+  .add('SVG Mouse Interactions', () => ({
+    template: `<svg (prSVGMouseEvents)="mouseEvent($event)"></svg>`,
+    props: {
+      mouseEvent: action('onClick'),
     }
   }));

@@ -2,18 +2,20 @@ import { number } from '@storybook/addon-knobs';
 import { ChartMatrix } from 'dental-charting';
 
 
-export function SVGWrap(content: string): string {
+export function SVGWrap(content: string, height: number = 500, width: number = 500): string {
   return `<svg
     style="outline: 1px dashed rgba(0, 0, 0, .2)"
-    height="400px"
-    width="100%"
-    viewBox="0 0 600 1000">
+    height="${height}px"
+    width="${width}"
+    viewBox="0 0 ${width} ${height}">
     ${content}
   </svg>`;
 }
 
-export function translate(x: number = 220, y: number = 220): string {
-  return `transform="translate(${x} ${y})"`;
+export function SVGCenter(content: string, height: number = 500, width: number = 500): string {
+  const xPos = width / 2;
+  const yPos = height / 2;
+  return `<svg:g transform="translate(${xPos}, ${yPos})">${content}</svg:g>`;
 }
 
 export function rootsKnob(name: string = 'roots', count: number = 3) {
@@ -27,8 +29,8 @@ export function rootsKnob(name: string = 'roots', count: number = 3) {
 
 export function matrixKnobs(name: string = 'matrix') {
   return Object.assign(new ChartMatrix(), {
-    xPos: number('xPos', 220, undefined, name),
-    yPos: number('yPos', 220, undefined, name),
+    xPos: number('xPos', 50, undefined, name),
+    yPos: number('yPos', 50, undefined, name),
     xScale: number('xScale', 1, undefined, name),
     yScale: number('yScale', 1, undefined, name),
     rotation: number('rotation', 0, undefined, name),
