@@ -7,8 +7,14 @@ import {
   ToothRootComponent,
   ToothHitboxesComponent,
   ToothComponent,
+  QuadrantComponent,
+  ArchComponent,
+  MouthComponent,
   ChartMatrixDirective,
   matrix,
+  mockQuadrant,
+  mockArch,
+  mockMouth,
 } from 'dental-charting';
 
 
@@ -22,6 +28,9 @@ const stories = storiesOf('Dental Charting', module)
       ToothRootComponent,
       ToothHitboxesComponent,
       ToothComponent,
+      QuadrantComponent,
+      ArchComponent,
+      MouthComponent,
       ChartMatrixDirective
     ],
   }));
@@ -62,20 +71,70 @@ stories
     }
   }))
 
+  .add('Tooth', () => ({
+    template: SVGWrap(`<svg:g dc-tooth
+      [roots]="roots"
+      [label]="label"
+      [isSelected]="isSelected"
+      [isHighlighted]="isHighlighted"
+      ${translate()}></svg:g>`),
+    props: {
+      label: text('label', '24'),
+      roots: rootsKnob(),
+      isSelected: boolean('isSelected', false),
+      isHighlighted: boolean('isHighlighted', false),
+    }
+  }))
+
+  .add('Quadrant', () => ({
+    template: SVGWrap(`<svg:g dc-quadrant
+      [label]="label"
+      [rows]="rows"
+      [isSelected]="isSelected"
+      [isHighlighted]="isHighlighted"
+      ></svg:g>`),
+    props: {
+      label: text('label', 'Quadrant 3'),
+      rows: mockQuadrant().rows,
+      isSelected: boolean('isSelected', false),
+      isHighlighted: boolean('isHighlighted', false),
+    }
+  }))
+
+  .add('Arch', () => ({
+    template: SVGWrap(`<svg:g dc-arch
+      [label]="label"
+      [quadrants]="quadrants"
+      [isSelected]="isSelected"
+      [isHighlighted]="isHighlighted"
+      ></svg:g>`),
+    props: {
+      label: text('label', 'Upper Arch'),
+      quadrants: mockArch().quadrants,
+      isSelected: boolean('isSelected', false),
+      isHighlighted: boolean('isHighlighted', false),
+    }
+  }))
+
+  .add('Mouth', () => ({
+    template: SVGWrap(`<svg:g dc-mouth
+      [arches]="arches"
+      [isSelected]="isSelected"
+      [isHighlighted]="isHighlighted"
+      ></svg:g>`),
+    props: {
+      arches: mockMouth().arches,
+      isSelected: boolean('isSelected', false),
+      isHighlighted: boolean('isHighlighted', false),
+    }
+  }))
+
   .add('Hit Boxes', () => ({
     template: SVGWrap(`<svg:g dc-hitboxes [hitboxes]="hitboxes" ${translate()}></svg:g>`),
     props: {
       hitboxes: [
         [0, 40, 40, 40, 40, -40]
       ]
-    }
-  }))
-
-  .add('Tooth', () => ({
-    template: SVGWrap(`<svg:g dc-tooth [roots]="roots" [label]="label" ${translate()}></svg:g>`),
-    props: {
-      label: text('label', 'Tooth Label'),
-      roots: rootsKnob(),
     }
   }))
 

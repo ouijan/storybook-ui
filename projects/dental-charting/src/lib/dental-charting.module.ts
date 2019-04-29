@@ -6,6 +6,9 @@ import { ToothRootComponent } from './components/tooth-root.component';
 import { ToothHitboxesComponent } from './components/hitboxes.component';
 import { ToothComponent } from './components/tooth.component';
 import { ChartMatrixDirective } from './directives/chart-matrix.directive';
+import { QuadrantComponent } from './components/quadrant.component';
+import { ArchComponent } from './components/arch.component';
+import { MouthComponent } from './components/mouth.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +17,10 @@ import { ChartMatrixDirective } from './directives/chart-matrix.directive';
     ToothRootComponent,
     ToothHitboxesComponent,
     ToothComponent,
-    ChartMatrixDirective
+    ChartMatrixDirective,
+    QuadrantComponent,
+    ArchComponent,
+    MouthComponent,
   ],
   imports: [
     CommonModule,
@@ -25,7 +31,10 @@ import { ChartMatrixDirective } from './directives/chart-matrix.directive';
     ToothRootComponent,
     ToothHitboxesComponent,
     ToothComponent,
-    ChartMatrixDirective
+    ChartMatrixDirective,
+    QuadrantComponent,
+    ArchComponent,
+    MouthComponent,
   ]
 })
 export class DentalChartingModule { }

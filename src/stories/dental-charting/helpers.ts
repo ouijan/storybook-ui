@@ -6,7 +6,8 @@ export function SVGWrap(content: string): string {
   return `<svg
     style="outline: 1px dashed rgba(0, 0, 0, .2)"
     height="400px"
-    width="100%">
+    width="100%"
+    viewBox="0 0 600 1000">
     ${content}
   </svg>`;
 }

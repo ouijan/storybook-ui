@@ -1,4 +1,6 @@
-import { Component, Input, HostBinding } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { IChartTooth, IChartSurface } from '../models/chart-mouth';
+import { mockSurface } from '../models/chart-mouth.mock';
 
 @Component({
   // tslint:disable-next-line: component-selector
@@ -10,7 +12,14 @@ import { Component, Input, HostBinding } from '@angular/core';
     }
   `],
 })
-export class ToothComponent {
-  @Input() roots = 1;
+export class ToothComponent implements IChartTooth {
+  facial: IChartSurface = mockSurface();
+  lingual: IChartSurface = mockSurface();
+  mesial: IChartSurface = mockSurface();
+  distal: IChartSurface = mockSurface();
+  occlusal: IChartSurface = mockSurface();
   @Input() label = '';
+  @Input() roots = 1;
+  @Input() isHighlighted = false;
+  @Input() isSelected = false;
 }

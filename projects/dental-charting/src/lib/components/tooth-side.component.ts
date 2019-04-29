@@ -1,4 +1,5 @@
 import { Component, HostBinding, Input } from '@angular/core';
+import { IChartSurface } from '../models/chart-mouth';
 
 @Component({
   // tslint:disable-next-line: component-selector
@@ -10,7 +11,7 @@ import { Component, HostBinding, Input } from '@angular/core';
   />`,
   styleUrls: ['../styles/surface.scss'],
 })
-export class ToothSideComponent {
+export class ToothSideComponent implements IChartSurface {
   @HostBinding('class.highlighted')
   @Input() isHighlighted = false;
 

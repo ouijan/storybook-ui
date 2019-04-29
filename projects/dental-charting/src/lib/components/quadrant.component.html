@@ -1,0 +1,14 @@
+<svg:text>{{ label }}</svg:text>
+<!-- Selector: isHighlighted, isSelected -->
+
+<svg:g *ngFor="let row of rows; let rowIndex = index"
+  [attr.transform]="getRowTransform(rowIndex)">
+
+  <svg:g *ngFor="let tooth of row.teeth; let toothIndex = index"
+    dc-tooth
+    [label]="tooth.label"
+    [roots]="tooth.roots"
+    [attr.transform]="getToothTransform(toothIndex)"
+  />
+
+</svg:g>
